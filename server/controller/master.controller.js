@@ -1,11 +1,11 @@
-const db = require('../db')
+const {Master} =require('../models/models')
+const ApiError=require('../exeptions/api-error')
 
 class MasterController {
-    async createMaster(req, res) {
-        const {name, email} = req.body
-        console.log(name, email)
-        const newMaster = await db.query(`INSERT INTO master (name, email) values ($1, $2) RETURNING *`, [name, email])
-        res.json(newMaster.rows[0])
+    async createMaster(req, res, next) {
+        const {name, email}=req.body
+        const newMaster = await Master.create({name, email})
+        return res.json(newMaster)
     }
 
     async getAllMasters(req, res) {
