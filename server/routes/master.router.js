@@ -9,10 +9,10 @@ const masterController = require('../controller/master.controller')
     //userController.registration
 );*/
 router.post('/createMaster', masterController.createMaster);
-router.get('/getMasters', masterController.getAllMasters);
+router.get('/getAllMasters', masterController.getAllMasters);
 router.get('/getOneMaster/:id', masterController.getOneMaster);
 router.put('/updateMaster', masterController.updateMaster);
-router.delete('/updateMaster', masterController.deleteMaster);
+router.delete('/deleteMaster', masterController.deleteMaster);
 
 
 module.exports=router

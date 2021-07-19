@@ -18,6 +18,20 @@ const Rating=sequelize.define('rating',{
 })
 const MasterCity = sequelize.define('master_city', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    masterId:{
+        type: DataTypes.INTEGER,
+        references:{
+            model: Master,
+            key:'id'
+        }
+    },
+    cityId:{
+        type: DataTypes.INTEGER,
+        references:{
+            model: City,
+            key:'id'
+        }
+    }
 })
 
 Master.belongsToMany(City, {through: MasterCity })

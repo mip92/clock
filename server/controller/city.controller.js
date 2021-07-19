@@ -21,10 +21,8 @@ class CityController {
     async getOneCity(req, res) {
         const id = req.params.id
         console.log(id)
-        const city = await db.query(`SELECT *
-                                     FROM city
-                                     where id = $1`, [id])
-        res.status(200).json(city.rows)
+        const city = await City.findByPk(id)
+        res.status(200).json(city)
     }
 }
 
